@@ -5,24 +5,19 @@ var prefix      = require('gulp-autoprefixer');
 var cp          = require('child_process');
 var jade        = require('gulp-jade');
 
+var jekyll   = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
 var messages = {
     jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
 };
-
-
-
 
 /**
  * Build the Jekyll Site
  */
 gulp.task('jekyll-build', function (done) {
     browserSync.notify(messages.jekyllBuild);
-    return cp.spawn('jekyll', ['build'], {stdio: 'inherit'})
+    return cp.spawn( jekyll , ['build'], {stdio: 'inherit'})
         .on('close', done);
 });
-
-
-
 
 /**
  * Rebuild Jekyll & do page reload
@@ -30,9 +25,6 @@ gulp.task('jekyll-build', function (done) {
 gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
     browserSync.reload();
 });
-
-
-
 
 /**
  * Wait for jekyll-build, then launch the Server
@@ -45,9 +37,6 @@ gulp.task('browser-sync', ['sass', 'jekyll-build'], function() {
         notify: false
     });
 });
-
-
-
 
 /**
  * Compile files from _scss into both _site/css (for live injecting) and site (for future jekyll builds)
@@ -64,14 +53,15 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('assets/css'));
 });
 
-/*
-* Travis is trying to Gulp stuff
-*/
+
+/**
+ * jade -sass code
+ */
 
 gulp.task('jade', function(){
-  return gulp.src('_jadefiles/*.jade')
-  .pipe(jade())
-  .pipe(gulp.dest('_includes'));
+    return gulp.src('_jadefiles/*.jade')
+    .pipe(jade())
+    .pipe(gulp.dest('_includes'))
 });
 
 
@@ -81,11 +71,10 @@ gulp.task('jade', function(){
  */
 gulp.task('watch', function () {
     gulp.watch('assets/css/**', ['sass']);
-    gulp.watch(['index.html', '_layouts/*.html', '_includes/*'], ['jekyll-rebuild']);
+    gulp.watch(['*.html', '_layouts/*.html', '_includes/*'], ['jekyll-rebuild']);
     gulp.watch('_jadefiles/*.jade', ['jade']);
+
 });
-
-
 
 
 /**
