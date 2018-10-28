@@ -1,0 +1,33 @@
+section.youtube
+	background:
+		image: url(../img/youtube-bg.jpg)
+		position: center
+		size: cover
+	color: white
+
+	.home-cta
+		color: #e20a0a
+
+	.video-strip
+		background: 
+			image: url(../img/video-strip.png)
+			position: center 0px
+			size: 100%
+			repeat: repeat-Y
+		position: absolute
+		top: 0
+		width: 100%
+		margin: -50px 0
+		height: calc(100% + 100px)
+
+		@media(max-width: 640px)
+			background:
+				size: 70%
+				
+	.col-1
+		position: relative
+		width: 100%	
+		height: 400px
+		display: flex
+		flex-direction: column
+		justify-content: center
