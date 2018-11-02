@@ -1,0 +1,20 @@
+mixin skill(logo, words)
+	li.skill(style="background-image: url(#{logo});")
+		.bubble
+			p #{words}
+
+section.skills-wrap
+	.flex.flex--space-around
+		.col-1
+			ui.skills
+				+skill("../assets/img/html.png"," A markup language is your way of making notes in a digital document that can be distinguished from regular text. It’s the most basic building block you’ll need for developing websites.")
+				+skill("../assets/img/css.png","CSS (Cascading Style Sheets) is the language used to present the document you create with HTML. Where HTML comes first and creates the foundation for your page, CSS comes along next and is used to create the page’s layout, color, fonts, and…well, the style!")
+				+skill("../assets/img/js.png","Where you need interactive features—audio and video, games, scrolling abilities, page animations—JS is the tool you’ll use to implement them (though as CSS evolves, it’s starting to handle a lot of these duties as well).")
+				+skill("../assets/img/responsive.png"," These days we use any number of computers, phones, and tablets to look at web pages. Ever notice how these pages adjust themselves to the device you’re using without you doing anything on your end? This is due to responsive design. Understanding responsive design principles and how to implement them on the coding side is key to front end development.")
+				+skill("../assets/img/git.png"," Git—is a tool you’ll use to track those changes so you can go back to a previous version of your work and find out what went wrong without tearing the whole thing down.")
+				+skill("../assets/img/gulp.png"," Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod")
+				+skill("../assets/img/sass.png","Using a CSS preprocessor like Sass, LESS, or Stylus, you’re able to write code in the preprocessor’s language (allowing you to do things that might be a huge pain with plain old CSS). The preprocessor then converts that code to CSS so it will work on your website.")
+
+		.col-1
+			p.home-lead.outdented ...Essential skills Every front end Developers needs
+			
